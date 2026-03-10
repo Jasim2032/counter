@@ -99,5 +99,49 @@
             <button class="btn" id="increase"><i class="fas fa-plus"></i> INCREASE</button>
         </div>
     </div>
+    
+    <script>
+        // Get references to DOM elements
+        const counterSpan = document.getElementById('counterValue');
+        const buttonContainer = document.getElementById('buttonContainer');
+
+  
+        let counter = 0;
+
+        // Function to update the display and color based on counter value
+        function updateDisplay() {
+            counterSpan.innerText = counter;
+
+           
+            if (counter > 0) {
+                counterSpan.style.color = '#28a745'; // green
+            } else if (counter < 0) {
+                counterSpan.style.color = '#dc3545'; // red
+            } else {
+                counterSpan.style.color = '#222'; // dark grey
+            }
+        }
+
+      
+        updateDisplay();
+
+      
+        buttonContainer.addEventListener('click', (e) => {
+          
+            if (e.target.classList.contains('btn')) {
+                // Determine which button was clicked using its id
+                if (e.target.id === 'decrease') {
+                    counter--;
+                } else if (e.target.id === 'reset') {
+                    counter = 0;
+                } else if (e.target.id === 'increase') {
+                    counter++;
+                }
+
+                // Update the display with new value and color
+                updateDisplay();
+            }
+        });
+    </script>
 </body>
 </html>
